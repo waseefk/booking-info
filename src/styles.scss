@@ -1,0 +1,140 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+
+  .body {
+    width: 100%; // take the full width of the container
+    padding: 20px;
+  }
+
+  .header {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .header::after {
+    content: "";
+    display: block;
+    margin: auto;
+    width: 8%;
+    border-bottom: 5px solid #000;
+    padding-bottom: 10px;
+  }
+
+  .sub-header {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+
+  form {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+
+      label {
+        font-size: 0.7em;
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      label:active {
+        outline: none;
+        border: none;
+      }
+      input {
+        flex-grow: 1;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+      }
+      input#booking_code {
+        text-transform: uppercase;
+      }
+      input:focus-visible,
+      :focus,
+      :active {
+        outline: 1px solid #000; // for focus-visible
+        border: 1px solid #000;
+        border-radius: none;
+      }
+      .error-message {
+        font-size: 0.8em;
+        font-weight: 400;
+        color: #c00000;
+        margin-bottom: 10px;
+      }
+    }
+    .form-submit {
+      display: flex;
+      gap: 10px;
+
+      .primary {
+        margin: 10px auto;
+        width: 100%;
+        border: none;
+        background-color: #c00000;
+        text-align: center;
+        padding: 10px 30px;
+        color: white;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+// Styles for larger screens
+@media (min-width: 768px) {
+  .container {
+    width: 100%; // take only half of the screen width
+    height: 80vh;
+    margin: 0 auto; // center the container horizontally
+    border: none;
+
+    .body {
+      width: 300px; // take the full width of the container
+      border: 2px solid grey;
+    }
+    .header::after {
+      content: "";
+      border-bottom: 3px solid #000;
+    }
+
+    .sub-header {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+    form {
+      .form-submit {
+        display: flex;
+        gap: 10px;
+
+        .primary {
+          width: 180px;
+          margin: 0 auto;
+          border: none;
+          background-color: #c00000;
+          text-align: center;
+          padding: 10px 30px;
+          color: white;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}

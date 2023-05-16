@@ -1,0 +1,37 @@
+<div class="container" *ngIf="booking">
+  <div class="body">
+    <div class="header">Booking {{ booking.bookingCode }}</div>
+    <div class="sub-header">
+      Your booking results for {{ booking.bookingCode }} &
+      {{ booking.passengers.lastName }}
+    </div>
+
+    <app-expansion-panel
+      panelTitle="Contact Details"
+      (expandedEvent)="panelExpanded($event)"
+    >
+      <p>Email: {{ booking.contactDetails[0].address }}</p>
+
+      <p>
+        First Name:
+        {{ booking.passengers.firstName }}
+      </p>
+      <p>
+        Last Name:
+        {{ booking.passengers.lastName }}
+      </p>
+    </app-expansion-panel>
+
+    <app-expansion-panel
+      panelTitle="Itenary Details"
+      (expandedEvent)="panelExpanded($event)"
+    >
+      <p>Booking type: {{ booking.itinerary.type }}</p>
+      <div *ngFor="let connectionDetails of booking.itinerary.connections">
+        <p>Travel Duration: {{ connectionDetails.duration }}</p>
+        <p>IATA Code: {{ connectionDetails.origin.IATACode }}</p>
+        <p>Traveling To: {{ connectionDetails.origin.name }}</p>
+      </div>
+    </app-expansion-panel>
+  </div>
+</div>

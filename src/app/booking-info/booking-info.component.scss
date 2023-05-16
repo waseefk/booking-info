@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+  .container {
+    width: 100%; // take only half of the screen width
+    height: 80vh;
+    margin: 0 auto; // center the container horizontally
+    border: none;
+
+    .body {
+      width: 800px; // take the full width of the container
+      border: 2px solid grey;
+    }
+    .header::after {
+      content: "";
+      border-bottom: 3px solid #000;
+    }
+
+    .sub-header {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+  }
+}

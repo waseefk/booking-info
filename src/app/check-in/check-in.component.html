@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="body">
+    <div class="header">Retrieve your booking</div>
+    <div class="sub-header">
+      You can find your booking by filling out your family name and the booking
+      code in your booking confirmation.
+    </div>
+    <form (submit)="onSubmit($event)" #bookingForm="ngForm">
+      <div class="form-group">
+        <label for="booking_code">Booking code</label>
+        <input
+          type="text"
+          name="booking_code"
+          placeholder="A1B2C3"
+          id="booking_code"
+          maxlength="6"
+          minlength="5"
+          [(ngModel)]="bookingCode"
+          required
+          pattern="[2-9a-zA-Z]{5,6}"
+          #bookingCodeInput="ngModel"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            bookingCodeInput.invalid &&
+            (bookingCodeInput.dirty || bookingCodeInput.touched)
+          "
+        >
+          <div *ngIf="bookingCodeInput.errors?.['required']">
+            Booking code is required.
+          </div>
+          <div *ngIf="bookingCodeInput.errors?.['minlength']">
+            Booking code must have at least 5 characters.
+          </div>
+          <div *ngIf="bookingCodeInput.errors?.['maxlength']">
+            Booking code cannot exceed 6 characters.
+          </div>
+          <div *ngIf="bookingCodeInput.errors?.['pattern']">
+            Booking code must contain only numbers (2-9) and alphabets.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="family_name">Family name</label>
+        <input
+          type="text"
+          name="family_name"
+          placeholder="Family name"
+          id="family_name"
+          [(ngModel)]="familyName"
+          required
+          minlength="2"
+          maxlength="30"
+          #familyNameInput="ngModel"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            familyNameInput.invalid &&
+            (familyNameInput.dirty || familyNameInput.touched)
+          "
+        >
+          <div *ngIf="familyNameInput.errors?.['required']">
+            Family name is required.
+          </div>
+          <div *ngIf="familyNameInput.errors?.['minlength']">
+            Family name must have at least 2 characters.
+          </div>
+          <div *ngIf="familyNameInput.errors?.['maxlength']">
+            Family name cannot exceed 30 characters.
+          </div>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="primary" [disabled]="bookingForm.invalid">
+          Retrieve Booking
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

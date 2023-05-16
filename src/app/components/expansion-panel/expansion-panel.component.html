@@ -1,0 +1,10 @@
+<div class="expansion-panel">
+  <div class="panel-title" (click)="togglePanel()">
+    {{ panelTitle }}
+    <span>{{ expanded ? "▲" : "▼" }}</span>
+  </div>
+
+  <div class="panel-content" [hidden]="!expanded">
+    <ng-content></ng-content>
+  </div>
+</div>
